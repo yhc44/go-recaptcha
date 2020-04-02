@@ -64,6 +64,13 @@ func Confirm(remoteip, response string) (result bool, err error) {
 	return
 }
 
+// ConfirmFull is Like Confirm, but it returns the full result
+func ConfirmFull(remoteip, response string) (r RecaptchaResponse, err error) {
+	resp, err := check(remoteip, response)
+	r = resp
+	return
+}
+
 // Init allows the webserver or code evaluating the reCaptcha form input to set the
 // reCaptcha private key (string) value, which will be different for every domain.
 func Init(key string) {
